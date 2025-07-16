@@ -24,8 +24,24 @@ const UIModule = (function() {
         q1: document.getElementById('q1'),
         q2: document.getElementById('q2'),
         q3: document.getElementById('q3'),
-        q4: document.getElementById('q4')
+        q4: document.getElementById('q4'),
+        focusOverlay: document.getElementById('focus-overlay'),
+        focusTaskName: document.getElementById('focus-task-name'),
+        focusTimer: document.getElementById('focus-timer')
     };
+
+    function showFocusMode(taskName) {
+        DOM.focusTaskName.textContent = taskName;
+        DOM.focusOverlay.style.display = 'flex'; // Usamos flex para centrar
+    }
+
+    function hideFocusMode() {
+        DOM.focusOverlay.style.display = 'none';
+    }
+
+    function updateTimerDisplay(timeString) {
+        DOM.focusTimer.textContent = timeString;
+    }
 
     function renderTasks() {
         // 1. Limpiar todos los cuadrantes para evitar duplicados
@@ -70,7 +86,10 @@ const UIModule = (function() {
     // Exponemos solo las funciones que otros módulos necesitan
     return {
         render: render,
-        DOM: DOM // Exponemos DOM para que AppModule pueda añadir event listeners
+        DOM: DOM, 
+        showFocusMode: showFocusMode,
+        hideFocusMode: hideFocusMode,
+        updateTimerDisplay: updateTimerDisplay // <-- AÑADIR
     };
 })();
 
@@ -104,6 +123,7 @@ const AuthModule = (function() {
         login: login,
         logout: logout,
         checkCurrentUser: checkCurrentUser
+        // ¡Se han eliminado las líneas incorrectas!
     };
 })();
 
@@ -176,27 +196,48 @@ const TasksModule = (function() {
 
     // --- MÓDULO FOCUS ---
     let timerInterval = null;
-    const FOCUS_TIME = 25 * 60; // 25 minutos
+    // const FOCUS_TIME = 25 * 60; // 25 minutos
+    const FOCUS_TIME_SECONDS = 5; // Para pruebas rápidas. Cambiar a 25 * 60 para la versión final.
 
     const FocusModule = (function() {
         function startFocus(taskId) {
             const task = State.tasks.find(t => t.id === taskId);
             if (!task) return;
 
+            // Detener cualquier temporizador anterior
+            if (timerInterval) clearInterval(timerInterval);
+
             // Pedir permiso de notificaciones al iniciar el primer foco
             NotificationsModule.requestPermission();
-            
-            // Lógica para mostrar el overlay y el temporizador...
-            // (El Desarrollador A lo manejará en el UIModule)
-            
-            // Cuando el tiempo termine...
-            // NotificationsModule.show("¡Foco Completado!", `¡Buen trabajo con "${task.text}"!`);
+
+            UIModule.showFocusMode(task.text);
+
+            let timeLeft = FOCUS_TIME_SECONDS;
+
+            // 2. Iniciar el temporizador
+            timerInterval = setInterval(() => {
+                timeLeft--;
+
+                // Actualizar la UI del temporizador
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                UIModule.updateTimerDisplay(`${minutes}:${seconds < 10 ? '0' : ''}${seconds}`);
+
+                // 3. Cuando el tiempo termina
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    UIModule.hideFocusMode();
+                    NotificationsModule.show("¡Foco Completado!", `¡Buen trabajo con "${task.text}"!`);
+                
+                // Opcional: Marcar la tarea como completada o añadir un sonido
+                }
+            }, 1000);
         }
 
         return { startFocus };
     })();
-
-
+            
+    
 // --- MÓDULO APP (ORQUESTADOR) ---
 // Responsable de inicializar la app y conectar los otros módulos.
 const AppModule = (function() {
