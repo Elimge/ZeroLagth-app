@@ -20,8 +20,31 @@ const UIModule = (function() {
         loginScreen: document.getElementById('login-screen'),
         appScreen: document.getElementById('app-screen'),
         welcomeMessage: document.getElementById('welcome-message'),
-        logoutButton: document.getElementById('logout-button') 
+        logoutButton: document.getElementById('logout-button'), 
+        q1: document.getElementById('q1'),
+        q2: document.getElementById('q2'),
+        q3: document.getElementById('q3'),
+        q4: document.getElementById('q4')
     };
+
+    function renderTasks() {
+        // 1. Limpiar todos los cuadrantes para evitar duplicados
+        DOM.q1.innerHTML = '<h2>Hacer Ahora (Urgente / Importante)</h2>';
+        DOM.q2.innerHTML = '<h2>Planificar (Importante / No Urgente)</h2>';
+        DOM.q3.innerHTML = '<h2>Delegar (Urgente / No Importante)</h2>';
+        DOM.q4.innerHTML = '<h2>Eliminar (No Urgente / No Importante)</h2>';
+
+        // 2. Iterar sobre las tareas del Estado y dibujarlas
+        State.tasks.forEach(task => {
+            const taskElement = document.createElement('div');
+            taskElement.classList.add('task'); // Añadimos una clase para estilos
+            taskElement.textContent = task.text;
+            taskElement.dataset.id = task.id; // Guardamos el ID en el elemento
+
+            // Añadimos la tarea al cuadrante correcto
+            DOM[task.quadrant].appendChild(taskElement);
+        });
+    }
 
     // Función pública que redibuja la app basándose en el Estado
     function render() {
@@ -29,6 +52,7 @@ const UIModule = (function() {
             DOM.loginScreen.style.display = 'none';
             DOM.appScreen.style.display = 'block';
             DOM.welcomeMessage.textContent = `Dashboard de ${State.currentUser}`;
+            renderTasks();
         } else {
             DOM.loginScreen.style.display = 'block';
             DOM.appScreen.style.display = 'none';
@@ -50,12 +74,14 @@ const AuthModule = (function() {
         // Lógica de negocio: modificar el Estado
         State.currentUser = username;
         localStorage.setItem('currentUser', username);
+        TasksModule.loadTasks();
     }
 
     function logout() {
         // Lógica de negocio: modificar el Estado
         State.currentUser = null;
         localStorage.removeItem('currentUser');
+        State.tasks = [];
     }
 
     function checkCurrentUser() {
@@ -63,6 +89,7 @@ const AuthModule = (function() {
         if (user) {
             // Si encontramos un usuario, lo ponemos en el Estado
             State.currentUser = user;
+            TasksModule.loadTasks();
         }
     }
     
@@ -107,10 +134,20 @@ const TasksModule = (function() {
         localStorage.setItem(`tasks_${State.currentUser}`, JSON.stringify(State.tasks));
     }
 
+    function loadTasks() {
+        const savedTasks = localStorage.getItem(`tasks_${State.currentUser}`);
+        if (savedTasks) {
+            State.tasks = JSON.parse(savedTasks);
+        } else {
+            State.tasks = []; // Asegurarse de que esté vacío si no hay nada guardado
+        }
+    }
+
     // (Próximamente añadiremos la función para cargar tareas)
 
     return {
-        addTask: addTask
+        addTask: addTask,
+        loadTasks: loadTasks 
     };
 })();
 

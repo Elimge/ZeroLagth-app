@@ -72,3 +72,12 @@ button:hover {
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
 }
+
+.task {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    text-align: left;
+}
