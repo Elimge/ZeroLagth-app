@@ -1,118 +1,333 @@
-/* Estilos generales para que no se vea tan vacío */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f0f2f5;
-    color: #1c1e21;
+/* ============================================================================
+   FocoTour Barranquilla - style.css
+   ============================================================================
+   This stylesheet provides a clean, modern, and responsive design for the app.
+   It uses CSS variables for easy theme management and a mobile-first approach.
+   ============================================================================ */
+
+/* --- 1. CSS Variables (Theme) & Global Resets --- */
+:root {
+    --primary-color: #009688; /* A vibrant teal for primary actions */
+    --secondary-color: #ffc107; /* A warm amber for secondary actions */
+    --background-color: #f7f9fa; /* A very light, clean gray */
+    --card-bg-color: #ffffff;
+    --text-color: #333333;
+    --text-light: #666666;
+    --border-color: #e9ecef;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.view-container {
+    width: 100%;
+    min-height: 100vh;
     padding: 20px;
+}
+
+/* --- 2. Typography & General Elements --- */
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+hr.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+/* --- 3. Buttons --- */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+button:disabled {
+    background-color: var(--border-color);
+    color: var(--text-light);
+    cursor: not-allowed;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+.primary-btn:hover:not(:disabled) {
+    background-color: #00796b;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.secondary-btn:hover:not(:disabled) {
+    background-color: #ffb300;
+}
+
+.tertiary-btn {
+    background: none;
+    color: var(--text-light);
+}
+.tertiary-btn:hover:not(:disabled) {
+    background-color: var(--border-color);
+}
+
+/* --- 4. Login Screen --- */
+#login-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
-/* Ocultar la pantalla de la app por defecto */
-#app-screen {
-    display: none;
-}
-
-/* Estilos básicos para los contenedores */
-#login-screen, #app-screen {
-    background-color: white;
+#login-screen .card {
+    background-color: var(--card-bg-color);
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     text-align: center;
     width: 100%;
     max-width: 400px;
 }
 
-input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+#login-screen input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
 }
 
-button {
-    background-color: #007bff;
+/* --- 5. Main App Layout --- */
+#app-screen {
+    display: none; /* Hidden by default, shown by JS */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.app-header .user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- 6. Discover & Spots Section --- */
+#category-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+    border-color: var(--primary-color);
 }
 
-button:hover {
-    background-color: #0056b3;
+#spots-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: 1 column */
+    gap: 1.5rem;
 }
 
-/* Añadir al final de style.css */
+.spot-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.spot-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.spot-card h3 {
+    padding: 1rem 1rem 0 1rem;
+}
+.spot-card p {
+    padding: 0 1rem;
+    flex-grow: 1; /* Makes sure cards in a row have same height */
+}
+.spot-card .add-to-route-btn {
+    width: calc(100% - 2rem);
+    margin: 0 1rem 1rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* --- 7. Eisenhower Matrix & Plan Section --- */
 #eisenhower-matrix {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 15px;
-    margin-top: 30px;
+    grid-template-columns: 1fr; /* Mobile-first: 1 column */
+    gap: 1.5rem;
 }
 
 .quadrant {
-    background-color: #f0f2f5;
+    background-color: var(--card-bg-color);
     padding: 15px;
-    border-radius: 8px;
-    min-height: 150px;
+    border-radius: var(--border-radius);
+    border-top: 4px solid;
 }
 
+/* Assigning colors to each quadrant */
+#q1 { border-color: #e53935; } /* Red for Do Now */
+#q2 { border-color: #43a047; } /* Green for Plan */
+#q3 { border-color: #fdd835; } /* Yellow for Delegate */
+#q4 { border-color: #757575; } /* Gray for Eliminate */
+
 .quadrant h2 {
-    font-size: 1em;
-    margin-top: 0;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 10px;
+    font-size: 1.1em;
+    margin-bottom: 1rem;
 }
 
 .task {
-    background-color: white;
+    background-color: #f7f9fa;
     padding: 10px;
     border-radius: 4px;
     margin-top: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-    text-align: left;
+    border-left: 3px solid var(--primary-color);
+}
+.task .focus-btn {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.9em;
+    padding: 8px;
+    background-color: #43a047;
+    color: white;
 }
 
- /* Estilos para el botón de foco */
-    .focus-btn {
-        background-color: #28a745; /* Verde */
-        font-size: 0.8em;
-        padding: 5px 10px;
-        margin-top: 8px;
-        display: block;
-        width: 100%;
-    }
-    .focus-btn:hover {
-        background-color: #218838;
+
+/* --- 8. Overlays (Focus & Priority) --- */
+#focus-overlay, #priority-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+}
+
+#focus-box { text-align: center; }
+#focus-timer { font-size: 6rem; font-weight: 700; }
+
+#priority-box {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+#priority-list { list-style-position: inside; }
+#priority-list li {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tag {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    color: white;
+}
+.tag-q1 { background-color: #e53935; }
+.tag-q2 { background-color: #43a047; }
+
+.task {
+    display: flex; /* Esto nos ayuda a alinear el texto y el botón */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.visited-btn {
+    background-color: #4caf50; /* Un verde satisfactorio */
+    color: white;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    flex-shrink: 0; /* Evita que el botón se encoja */
+    margin-left: 10px;
+}
+
+.visited-btn:hover {
+    background-color: #43a047;
+}
+
+/* --- 9. Responsive Design (Media Queries) --- */
+@media (min-width: 768px) {
+    #spots-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Estilos para el Modo Foco */
-    #focus-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
-        display: none; /* Oculto por defecto */
-        justify-content: center;
-        align-items: center;
-        color: white;
-        z-index: 1000;
+    #eisenhower-matrix {
+        grid-template-columns: repeat(2, 1fr);
     }
-    #focus-box {
-        text-align: center;
+}
+
+@media (min-width: 1024px) {
+    #spots-container {
+        grid-template-columns: repeat(3, 1fr);
     }
-    #focus-timer {
-        font-size: 6em;
-        font-weight: bold;
-    }
+}

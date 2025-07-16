@@ -3,56 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZeroLagth - From the "Nudge" to the action</title>
+    <title>FocoTour - Barranquilla</title>
+    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style.css">
+    <!-- Recommended: Add a link to Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+
+    <!-- OVERLAY 1: FOCUS MODE -->
     <div id="focus-overlay">
         <div id="focus-box">
-            <p>Enfocado en:</p>
+            <p>Focusing on:</p>
             <h2 id="focus-task-name"></h2>
             <div id="focus-timer">25:00</div>
         </div>
     </div>
 
-
-    <!-- VISTA 1: LOGIN (Se muestra al inicio) -->
-    <div id="login-screen">
-        <h1>Welcome to ZeroLagth</h1>
-        <form id="login-form">
-            <p>What's your name?</p>
-            <input type="text" id="username-input" placeholder="Your name..." required>
-            <button type="submit">Start</button>
-        </form>
+    <!-- OVERLAY 2: PRIORITY VIEW -->
+    <div id="priority-overlay">
+        <div id="priority-box">
+            <h2>Your Focus Plan</h2>
+            <p>This is your recommended route, starting with what's most urgent and important.</p>
+            <ol id="priority-list"></ol>
+            <button id="close-priority-button">Close</button>
+        </div>
     </div>
 
-    <!-- VISTA 2: APP PRINCIPAL (Oculta por defecto) -->
-    <div id="app-screen">
-        <header>
-            <h1 id="welcome-message"></h1>
-            <button id="logout-button">Exit</button>
-        </header>
-        <!-- Dentro de <div id="app-screen"> -->
-        <main>
-            <div id="task-adder">
-                <h3>Añade una nueva tarea</h3>
-                <form id="task-form">
-                    <input type="text" id="task-input" placeholder="Ej: Preparar la demo..." required>
-                    <button type="submit">Añadir Tarea</button>
-                </form>
-            </div>
+    <!-- VIEW 1: LOGIN SCREEN -->
+    <div id="login-screen" class="view-container">
+        <div class="card">
+            <h1>Welcome to FocoTour</h1>
+            <p>Your smart guide to exploring Barranquilla.</p>
+            <form id="login-form">
+                <label for="username-input">What's your name?</label>
+                <input type="text" id="username-input" placeholder="e.g., Alex" required>
+                <button type="submit" class="primary-btn">Start Exploring</button>
+            </form>
+        </div>
+    </div>
 
-            <div id="eisenhower-matrix">
-                <div class="quadrant" id="q1"><h2>Hacer Ahora (Urgente / Importante)</h2></div>
-                <div class="quadrant" id="q2"><h2>Planificar (Importante / No Urgente)</h2></div>
-                <div class="quadrant" id="q3"><h2>Delegar (Urgente / No Importante)</h2></div>
-                <div class="quadrant" id="q4"><h2>Eliminar (No Urgente / No Importante)</h2></div>
+    <!-- VIEW 2: MAIN APPLICATION SCREEN -->
+    <div id="app-screen" class="view-container">
+        <header class="app-header">
+            <div class="logo">FocoTour</div>
+            <div class="user-controls">
+                <span id="welcome-message"></span>
+                <button id="prioritize-button" class="secondary-btn">Prioritize My Day</button>
+                <button id="logout-button" class="tertiary-btn">Logout</button>
             </div>
+        </header>
+
+        <main class="app-main">
+            
+            <!-- Section for Discovering Spots -->
+            <section id="discover-section">
+                <h2>Discover Barranquilla</h2>
+                <p>Filter by category and add spots to your personal route.</p>
+                <div id="category-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="gastronomy">Gastronomy</button>
+                    <button class="filter-btn" data-category="culture">Culture</button>
+                    <button class="filter-btn" data-category="history">History</button>
+                </div>
+                <div id="spots-container">
+                    <!-- Tourist spot cards will be dynamically inserted here by JavaScript -->
+                </div>
+            </section>
+            
+            <hr class="section-divider">
+
+            <!-- Section for Planning Your Route -->
+            <section id="plan-section">
+                <h2>Plan Your Route</h2>
+                <p>Here are the spots you've added, organized by the Eisenhower Matrix.</p>
+                <div id="eisenhower-matrix">
+                    <div class="quadrant" id="q1"><h2>Do Now (Urgent & Important)</h2></div>
+                    <div class="quadrant" id="q2"><h2>Plan (Important & Not Urgent)</h2></div>
+                    <div class="quadrant" id="q3"><h2>Delegate (Urgent & Not Important)</h2></div>
+                    <div class="quadrant" id="q4"><h2>Eliminate (Not Urgent & Not Important)</h2></div>
+                </div>
+            </section>
+
         </main>
     </div>
 
-    <!-- El script se carga al final -->
+    <!-- The script is loaded at the end to ensure the DOM is ready -->
     <script src="script.js"></script>
 </body>
 </html>
