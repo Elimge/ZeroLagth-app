@@ -41,6 +41,13 @@ const UIModule = (function() {
             taskElement.textContent = task.text;
             taskElement.dataset.id = task.id; // Guardamos el ID en el elemento
 
+            if (task.quadrant === 'q1') {
+                const focusButton = document.createElement('button');
+                focusButton.classList.add('focus-btn');
+                focusButton.textContent = '▶️ Iniciar Foco';
+                focusButton.dataset.taskId = task.id; // Vinculamos el botón a la tarea
+                taskElement.appendChild(focusButton);
+            }
             // Añadimos la tarea al cuadrante correcto
             DOM[task.quadrant].appendChild(taskElement);
         });
@@ -151,6 +158,44 @@ const TasksModule = (function() {
     };
 })();
 
+// --- MÓDULO NOTIFICATIONS ---
+    const NotificationsModule = (function() {
+        function requestPermission() {
+            if (!("Notification" in window)) return;
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission();
+            }
+        }
+        function show(title, body) {
+            if (Notification.permission === "granted") {
+                new Notification(title, { body: body });
+            }
+        }
+        return { requestPermission, show };
+    })();
+
+    // --- MÓDULO FOCUS ---
+    let timerInterval = null;
+    const FOCUS_TIME = 25 * 60; // 25 minutos
+
+    const FocusModule = (function() {
+        function startFocus(taskId) {
+            const task = State.tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            // Pedir permiso de notificaciones al iniciar el primer foco
+            NotificationsModule.requestPermission();
+            
+            // Lógica para mostrar el overlay y el temporizador...
+            // (El Desarrollador A lo manejará en el UIModule)
+            
+            // Cuando el tiempo termine...
+            // NotificationsModule.show("¡Foco Completado!", `¡Buen trabajo con "${task.text}"!`);
+        }
+
+        return { startFocus };
+    })();
+
 
 // --- MÓDULO APP (ORQUESTADOR) ---
 // Responsable de inicializar la app y conectar los otros módulos.
@@ -159,6 +204,7 @@ const AppModule = (function() {
         const loginForm = document.getElementById('login-form');
         const logoutButton = UIModule.DOM.logoutButton;
         const taskForm = document.getElementById('task-form');
+        const matrix = document.getElementById('eisenhower-matrix');
 
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -185,10 +231,16 @@ const AppModule = (function() {
                 taskInput.value = '';
             }
         });
+
+            
+        matrix.addEventListener('click', (e) => {
+            if (e.target.classList.contains('focus-btn')) {
+                const taskId = parseInt(e.target.dataset.taskId);
+                FocusModule.startFocus(taskId);
+            }
+        });
         // (Aquí irán más event listeners en el futuro)
     }
-
-
 
     function init() {
         console.log("App iniciada.");
