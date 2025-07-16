@@ -19,7 +19,8 @@ const UIModule = (function() {
     const DOM = {
         loginScreen: document.getElementById('login-screen'),
         appScreen: document.getElementById('app-screen'),
-        welcomeMessage: document.getElementById('welcome-message')
+        welcomeMessage: document.getElementById('welcome-message'),
+        logoutButton: document.getElementById('logout-button') 
     };
 
     // Función pública que redibuja la app basándose en el Estado
@@ -48,17 +49,27 @@ const AuthModule = (function() {
     function login(username) {
         // Lógica de negocio: modificar el Estado
         State.currentUser = username;
-        // (Aquí se cargarían las tareas del usuario desde localStorage en el futuro)
+        localStorage.setItem('currentUser', username);
     }
 
     function logout() {
         // Lógica de negocio: modificar el Estado
         State.currentUser = null;
+        localStorage.removeItem('currentUser');
+    }
+
+    function checkCurrentUser() {
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+            // Si encontramos un usuario, lo ponemos en el Estado
+            State.currentUser = user;
+        }
     }
     
     return {
         login: login,
-        logout: logout
+        logout: logout,
+        checkCurrentUser: checkCurrentUser
     };
 })();
 
@@ -68,6 +79,8 @@ const AuthModule = (function() {
 const AppModule = (function() {
     function setupEventListeners() {
         const loginForm = document.getElementById('login-form');
+        const logoutButton = UIModule.DOM.logoutButton;
+
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const usernameInput = document.getElementById('username-input');
@@ -76,12 +89,18 @@ const AppModule = (function() {
             UIModule.render();
             usernameInput.value = '';
         });
+
+        logoutButton.addEventListener('click', () => {
+            AuthModule.logout(); // Llama a la lógica de negocio
+            UIModule.render();   // Redibuja la pantalla
+        });
         
         // (Aquí irán más event listeners en el futuro)
     }
 
     function init() {
         console.log("App iniciada.");
+        AuthModule.checkCurrentUser();
         setupEventListeners();
         UIModule.render(); // Realizamos el primer renderizado
     }
