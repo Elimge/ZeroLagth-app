@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroLagth - From the "Nudge" to the action</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- VISTA 1: LOGIN (Se muestra al inicio) -->
+    <div id="login-screen">
+        <h1>Welcome to ZeroLagth</h1>
+        <form id="login-form">
+            <p>What's your name?</p>
+            <input type="text" id="username-input" placeholder="Your name..." required>
+            <button type="submit">Start</button>
+        </form>
+    </div>
+
+    <!-- VISTA 2: APP PRINCIPAL (Oculta por defecto) -->
+    <div id="app-screen">
+        <header>
+            <h1 id="welcome-message"></h1>
+            <button id="logout-button">Exit</button>
+        </header>
+        <main>
+            <!-- Aquí irá el formulario para añadir tareas y la matriz de Eisenhower -->
+            <h2>Próximamente: La Matriz de Foco</h2>
+        </main>
+    </div>
+
+    <!-- El script se carga al final -->
+    <script src="script.js"></script>
+</body>
+</html>
