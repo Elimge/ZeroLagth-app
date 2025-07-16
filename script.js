@@ -73,6 +73,47 @@ const AuthModule = (function() {
     };
 })();
 
+// --- MÓDULO TASKS ---
+// Responsable de la lógica de añadir, clasificar y guardar tareas.
+const TasksModule = (function() {
+    function addTask(text) {
+        // 1. Hacer las preguntas de Eisenhower
+        const isUrgent = confirm("¿Esta tarea es URGENTE?");
+        const isImportant = confirm("¿Esta tarea es IMPORTANTE?");
+
+        // 2. Determinar el cuadrante
+        let quadrant;
+        if (isUrgent && isImportant) quadrant = 'q1';
+        else if (!isUrgent && isImportant) quadrant = 'q2';
+        else if (isUrgent && !isImportant) quadrant = 'q3';
+        else quadrant = 'q4';
+
+        // 3. Crear el objeto de la tarea
+        const newTask = {
+            id: Date.now(), // ID único basado en el tiempo
+            text: text,
+            quadrant: quadrant
+        };
+
+        // 4. Modificar el Estado
+        State.tasks.push(newTask);
+        
+        // 5. Guardar en localStorage
+        saveTasks();
+    }
+
+    function saveTasks() {
+        // Guardamos las tareas bajo el nombre del usuario actual
+        localStorage.setItem(`tasks_${State.currentUser}`, JSON.stringify(State.tasks));
+    }
+
+    // (Próximamente añadiremos la función para cargar tareas)
+
+    return {
+        addTask: addTask
+    };
+})();
+
 
 // --- MÓDULO APP (ORQUESTADOR) ---
 // Responsable de inicializar la app y conectar los otros módulos.
@@ -80,6 +121,7 @@ const AppModule = (function() {
     function setupEventListeners() {
         const loginForm = document.getElementById('login-form');
         const logoutButton = UIModule.DOM.logoutButton;
+        const taskForm = document.getElementById('task-form');
 
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -95,8 +137,21 @@ const AppModule = (function() {
             UIModule.render();   // Redibuja la pantalla
         });
         
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const taskInput = document.getElementById('task-input');
+            const taskText = taskInput.value;
+
+            if (taskText) {
+                TasksModule.addTask(taskText); // Llama a la lógica de negocio
+                UIModule.render();             // Redibuja la pantalla
+                taskInput.value = '';
+            }
+        });
         // (Aquí irán más event listeners en el futuro)
     }
+
+
 
     function init() {
         console.log("App iniciada.");

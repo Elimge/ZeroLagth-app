@@ -24,9 +24,22 @@
             <h1 id="welcome-message"></h1>
             <button id="logout-button">Exit</button>
         </header>
+        <!-- Dentro de <div id="app-screen"> -->
         <main>
-            <!-- Aquí irá el formulario para añadir tareas y la matriz de Eisenhower -->
-            <h2>Próximamente: La Matriz de Foco</h2>
+            <div id="task-adder">
+                <h3>Añade una nueva tarea</h3>
+                <form id="task-form">
+                    <input type="text" id="task-input" placeholder="Ej: Preparar la demo..." required>
+                    <button type="submit">Añadir Tarea</button>
+                </form>
+            </div>
+
+            <div id="eisenhower-matrix">
+                <div class="quadrant" id="q1"><h2>Hacer Ahora (Urgente / Importante)</h2></div>
+                <div class="quadrant" id="q2"><h2>Planificar (Importante / No Urgente)</h2></div>
+                <div class="quadrant" id="q3"><h2>Delegar (Urgente / No Importante)</h2></div>
+                <div class="quadrant" id="q4"><h2>Eliminar (No Urgente / No Importante)</h2></div>
+            </div>
         </main>
     </div>
 
