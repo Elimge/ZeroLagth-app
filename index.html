@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Link to your own CSS file -->
+    <!-- Link to your own CSS file (Asegúrate que el nombre sea correcto: style.css o styles.css) -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -114,6 +114,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="javascript:void(0)" class="sidebar-link" data-page="routePlanner">
+                        <span class="sidebar-icon"><i class="fas fa-route"></i></span>
+                        <span class="sidebar-text">Arma tu Ruta</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript:void(0)" class="sidebar-link" data-page="testimonials">
                         <span class="sidebar-icon"><i class="fas fa-comment"></i></span>
                         <span class="sidebar-text">Testimonios</span>
@@ -139,36 +145,28 @@
                             <i class="fas fa-exclamation-circle" style="color: #dc3545;"></i>
                             Tus preferencias
                         </h3>
-                        <div class="destinations-container" id="urgentImportantContainer">
-                            <!-- Content will be loaded here by JavaScript -->
-                        </div>
+                        <div class="destinations-container" id="urgentImportantContainer"></div>
                     </div>
                     <div class="eisenhower-quadrant not-urgent-important">
                         <h3 class="quadrant-title">
                             <i class="fas fa-calendar-check" style="color: var(--accent);"></i>
                             Lugares relacionados
                         </h3>
-                        <div class="destinations-container" id="notUrgentImportantContainer">
-                            <!-- Content will be loaded here by JavaScript -->
-                        </div>
+                        <div class="destinations-container" id="notUrgentImportantContainer"></div>
                     </div>
                     <div class="eisenhower-quadrant urgent-not-important">
                         <h3 class="quadrant-title">
                             <i class="fas fa-clock" style="color: var(--secondary);"></i>
                             Podría interesarte
                         </h3>
-                        <div class="destinations-container" id="urgentNotImportantContainer">
-                            <!-- Content will be loaded here by JavaScript -->
-                        </div>
+                        <div class="destinations-container" id="urgentNotImportantContainer"></div>
                     </div>
                     <div class="eisenhower-quadrant not-urgent-not-important">
                         <h3 class="quadrant-title">
                             <i class="fas fa-low-vision" style="color: #6c757d;"></i>
                             Otros lugares
                         </h3>
-                        <div class="destinations-container" id="notUrgentNotImportantContainer">
-                            <!-- Content will be loaded here by JavaScript -->
-                        </div>
+                        <div class="destinations-container" id="notUrgentNotImportantContainer"></div>
                     </div>
                 </div>
             </div>
@@ -176,24 +174,24 @@
             <!-- Favorites Page -->
             <div class="page" id="favoritesPage" style="display: none;">
                 <h1 class="section-title">Mis Lugares Favoritos</h1>
-                <div class="card-grid" id="favoritesGrid">
-                    <!-- Content will be loaded here by JavaScript -->
-                </div>
+                <div class="card-grid" id="favoritesGrid"></div>
             </div>
+
+            <!-- === LA PÁGINA "ARMA TU RUTA" AHORA ESTÁ AQUÍ, COMO HERMANA DE LAS OTRAS === -->
+            <div class="page" id="routePlannerPage" style="display: none;">
+                <h1 class="section-title">Arma tu Ruta Personalizada</h1>
+                <div id="routeQuestionsContainer"></div>
+                <div id="sortedRouteContainer" style="margin-top: 40px;"></div>
+            </div>
+            <!-- ======================================================================= -->
 
             <!-- Testimonials Page -->
             <div class="page" id="testimonialsPage" style="display: none;">
                 <h1 class="section-title">Testimonios</h1>
                 <div class="testimonials-container">
-                    <div class="testimonials-slider" id="testimonialsSlider">
-                        <!-- Content will be loaded here by JavaScript -->
-                    </div>
-                    <div class="slider-nav slider-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="slider-nav slider-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
+                    <div class="testimonials-slider" id="testimonialsSlider"></div>
+                    <div class="slider-nav slider-prev"><i class="fas fa-chevron-left"></i></div>
+                    <div class="slider-nav slider-next"><i class="fas fa-chevron-right"></i></div>
                 </div>
             </div>
 
@@ -203,13 +201,9 @@
                 <div class="admin-controls">
                     <div class="search-box">
                         <input type="text" class="search-input" placeholder="Buscar lugar...">
-                        <button class="search-btn">
-                            <i class="fas fa-search"></i>
-                        </button>
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
                     </div>
-                    <button class="btn btn-primary" id="addDestinationBtn">
-                        <i class="fas fa-plus"></i> Agregar Lugar
-                    </button>
+                    <button class="btn btn-primary" id="addDestinationBtn"><i class="fas fa-plus"></i> Agregar Lugar</button>
                 </div>
                 <table>
                     <thead>
@@ -220,15 +214,13 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="destinationsTable">
-                        <!-- Content will be loaded here by JavaScript -->
-                    </tbody>
+                    <tbody id="destinationsTable"></tbody>
                 </table>
             </div>
         </main>
     </div>
 
-    <!-- Interest Selection Modal -->
+    <!-- Modals -->
     <div class="modal-overlay" id="interestModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -238,30 +230,12 @@
             <div class="modal-body">
                 <p>Para personalizar tu experiencia, selecciona las categorías de lugares que más te interesan:</p>
                 <div class="category-options" id="categoryOptions">
-                    <div class="category-option" data-category="gastronomico">
-                        <span class="category-icon"><i class="fas fa-utensils"></i></span>
-                        <span class="category-name">Gastronómico</span>
-                    </div>
-                    <div class="category-option" data-category="cultural">
-                        <span class="category-icon"><i class="fas fa-theater-masks"></i></span>
-                        <span class="category-name">Cultural</span>
-                    </div>
-                    <div class="category-option" data-category="educativo">
-                        <span class="category-icon"><i class="fas fa-book"></i></span>
-                        <span class="category-name">Educativo</span>
-                    </div>
-                    <div class="category-option" data-category="recreativo">
-                        <span class="category-icon"><i class="fas fa-umbrella-beach"></i></span>
-                        <span class="category-name">Recreativo</span>
-                    </div>
-                    <div class="category-option" data-category="historico">
-                        <span class="category-icon"><i class="fas fa-landmark"></i></span>
-                        <span class="category-name">Histórico</span>
-                    </div>
-                    <div class="category-option" data-category="natural">
-                        <span class="category-icon"><i class="fas fa-tree"></i></span>
-                        <span class="category-name">Natural</span>
-                    </div>
+                    <div class="category-option" data-category="gastronomico"><span class="category-icon"><i class="fas fa-utensils"></i></span><span class="category-name">Gastronómico</span></div>
+                    <div class="category-option" data-category="cultural"><span class="category-icon"><i class="fas fa-theater-masks"></i></span><span class="category-name">Cultural</span></div>
+                    <div class="category-option" data-category="educativo"><span class="category-icon"><i class="fas fa-book"></i></span><span class="category-name">Educativo</span></div>
+                    <div class="category-option" data-category="recreativo"><span class="category-icon"><i class="fas fa-umbrella-beach"></i></span><span class="category-name">Recreativo</span></div>
+                    <div class="category-option" data-category="historico"><span class="category-icon"><i class="fas fa-landmark"></i></span><span class="category-name">Histórico</span></div>
+                    <div class="category-option" data-category="natural"><span class="category-icon"><i class="fas fa-tree"></i></span><span class="category-name">Natural</span></div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -270,23 +244,15 @@
             </div>
         </div>
     </div>
-
-    <!-- Destination Details Modal -->
     <div class="modal-overlay" id="destinationModal">
         <div class="modal-container details-modal-container">
             <div class="modal-header">
                 <h3>Detalles del Destino</h3>
                 <button class="modal-close" id="closeDestinationModal">×</button>
             </div>
-            <div class="modal-body">
-                <div class="destination-details" id="destinationDetails">
-                    <!-- Content will be loaded here by JavaScript -->
-                </div>
-            </div>
+            <div class="modal-body"><div class="destination-details" id="destinationDetails"></div></div>
         </div>
     </div>
-
-    <!-- Admin Destination Form Modal -->
     <div class="modal-overlay" id="destinationFormModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -296,38 +262,12 @@
             <div class="modal-body">
                 <form id="destinationForm">
                     <input type="hidden" id="destinationId">
-                    <div class="form-group">
-                        <label for="destinationName">Nombre</label>
-                        <input type="text" class="form-control" id="destinationName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="destinationCategory">Categoría</label>
-                        <select class="form-control" id="destinationCategory" required>
-                            <option value="">Selecciona una categoría</option>
-                            <option value="gastronomico">Gastronómico</option>
-                            <option value="cultural">Cultural</option>
-                            <option value="educativo">Educativo</option>
-                            <option value="recreativo">Recreativo</option>
-                            <option value="historico">Histórico</option>
-                            <option value="natural">Natural</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="destinationDescription">Descripción</label>
-                        <textarea class="form-control" id="destinationDescription" rows="4" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="destinationImageUrl">URL de Imagen</label>
-                        <input type="text" class="form-control" id="destinationImageUrl" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="destinationLocation">Ubicación</label>
-                        <input type="text" class="form-control" id="destinationLocation" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="destinationCoordinates">Coordenadas (latitud, longitud)</label>
-                        <input type="text" class="form-control" id="destinationCoordinates" placeholder="10.123, -74.456">
-                    </div>
+                    <div class="form-group"><label for="destinationName">Nombre</label><input type="text" class="form-control" id="destinationName" required></div>
+                    <div class="form-group"><label for="destinationCategory">Categoría</label><select class="form-control" id="destinationCategory" required><option value="">Selecciona una categoría</option><option value="gastronomico">Gastronómico</option><option value="cultural">Cultural</option><option value="educativo">Educativo</option><option value="recreativo">Recreativo</option><option value="historico">Histórico</option><option value="natural">Natural</option></select></div>
+                    <div class="form-group"><label for="destinationDescription">Descripción</label><textarea class="form-control" id="destinationDescription" rows="4" required></textarea></div>
+                    <div class="form-group"><label for="destinationImageUrl">URL de Imagen</label><input type="text" class="form-control" id="destinationImageUrl" required></div>
+                    <div class="form-group"><label for="destinationLocation">Ubicación</label><input type="text" class="form-control" id="destinationLocation" required></div>
+                    <div class="form-group"><label for="destinationCoordinates">Coordenadas (latitud, longitud)</label><input type="text" class="form-control" id="destinationCoordinates" placeholder="10.123, -74.456"></div>
                 </form>
             </div>
             <div class="modal-footer">

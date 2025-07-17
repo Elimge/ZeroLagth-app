@@ -6,6 +6,7 @@ const state = {
     currentPage: 'dashboard',
     userInterests: [],
     favorites: [],
+    routePreferences: {},
     destinations: [],
     testimonials: []
 };
@@ -38,6 +39,10 @@ const DOM = {
     favoritesPage: document.getElementById('favoritesPage'),
     testimonialsPage: document.getElementById('testimonialsPage'),
     adminPage: document.getElementById('adminPage'),
+
+    routePlannerPage: document.getElementById('routePlannerPage'),
+    routeQuestionsContainer: document.getElementById('routeQuestionsContainer'),
+    sortedRouteContainer: document.getElementById('sortedRouteContainer'),
     
     // Dashboard containers
     urgentImportantContainer: document.getElementById('urgentImportantContainer'),
@@ -222,6 +227,29 @@ function setupEventListeners() {
         hideModal(DOM.destinationFormModal);
     });
     DOM.saveDestinationForm.addEventListener('click', saveDestination);
+
+    DOM.routeQuestionsContainer.addEventListener('click', function(e) {
+    const button = e.target.closest('button.btn');
+    if (!button) return;
+
+    const id = parseInt(button.dataset.id);
+    const type = button.dataset.type; // 'urgent' o 'important'
+    const value = button.dataset.value === 'true'; // Convertir string a boolean
+
+    // Inicializar el objeto de preferencias si no existe
+    if (!state.routePreferences[id]) {
+        state.routePreferences[id] = {};
+    }
+
+    // Actualizar la preferencia
+    state.routePreferences[id][type] = value;
+    
+    // Guardar en localStorage para persistencia
+    localStorage.setItem('routePreferences', JSON.stringify(state.routePreferences));
+    
+    // Volver a renderizar la página para que se actualice el estado visual de los botones y la ruta
+    renderRoutePlannerPage();
+    }); 
 }
 
 // Handle Login
@@ -373,6 +401,9 @@ function changePage(page) {
     } else if (page === 'favorites') {
         DOM.favoritesPage.style.display = 'block';
         loadFavorites();
+    } else if (page === 'routePlanner') {
+        DOM.routePlannerPage.style.display = 'block';
+        renderRoutePlannerPage();
     } else if (page === 'testimonials') {
         DOM.testimonialsPage.style.display = 'block';
         loadTestimonials();
@@ -386,6 +417,107 @@ function changePage(page) {
             changePage('dashboard');
         }
     }
+}
+
+function renderRoutePlannerPage() {
+    showLoader();
+    DOM.routeQuestionsContainer.innerHTML = ''; // Limpiar contenido previo
+    DOM.sortedRouteContainer.innerHTML = '';   // Limpiar contenido previo
+
+    if (state.favorites.length === 0) {
+        DOM.routeQuestionsContainer.innerHTML = `<p>Aún no has añadido lugares a tus favoritos. ¡Ve al Dashboard y pulsa el ❤️ en los que te gusten para empezar!</p>`;
+        hideLoader();
+        return;
+    }
+
+    // Crear una tarjeta de preguntas para cada favorito
+    state.favorites.forEach(favId => {
+        const destination = state.destinations.find(d => d.id === favId);
+        if (!destination) return;
+
+        const prefs = state.routePreferences[favId] || {};
+
+        const card = document.createElement('div');
+        card.className = 'destination-card'; // Reutilizamos los estilos de las tarjetas
+        card.style.marginBottom = '20px';
+        card.innerHTML = `
+            <div class="card-content">
+                <h3 class="card-title">${destination.name}</h3>
+                <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                    <div>
+                        <strong>¿Es Urgente?</strong>
+                        <div class="action-buttons" style="margin-top: 5px;">
+                            <button class="btn btn-sm ${prefs.urgent === true ? 'btn-primary' : 'btn-outline'}" data-id="${favId}" data-type="urgent" data-value="true">Sí</button>
+                            <button class="btn btn-sm ${prefs.urgent === false ? 'btn-primary' : 'btn-outline'}" data-id="${favId}" data-type="urgent" data-value="false">No</button>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>¿Es Importante?</strong>
+                        <div class="action-buttons" style="margin-top: 5px;">
+                            <button class="btn btn-sm ${prefs.important === true ? 'btn-primary' : 'btn-outline'}" data-id="${favId}" data-type="important" data-value="true">Sí</button>
+                            <button class="btn btn-sm ${prefs.important === false ? 'btn-primary' : 'btn-outline'}" data-id="${favId}" data-type="important" data-value="false">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        DOM.routeQuestionsContainer.appendChild(card);
+    });
+
+    // Generar la ruta ordenada si ya hay preferencias
+    displaySortedRoute();
+    hideLoader();
+}
+
+function displaySortedRoute() {
+    DOM.sortedRouteContainer.innerHTML = ''; // Limpiar
+
+    const categories = {
+        'IU': [], // Importante y Urgente
+        'INU': [], // Importante, No Urgente
+        'NIU': [], // No Importante, Urgente
+        'NINU': [] // No Importante, No Urgente
+    };
+
+    state.favorites.forEach(favId => {
+        const dest = state.destinations.find(d => d.id === favId);
+        const prefs = state.routePreferences[favId];
+        if (!dest || !prefs || typeof prefs.important === 'undefined' || typeof prefs.urgent === 'undefined') {
+            return; // Omitir si no se han respondido ambas preguntas
+        }
+
+        if (prefs.important && prefs.urgent) categories.IU.push(dest);
+        else if (prefs.important && !prefs.urgent) categories.INU.push(dest);
+        else if (!prefs.important && prefs.urgent) categories.NIU.push(dest);
+        else categories.NINU.push(dest);
+    });
+
+    // No mostrar el título si no hay nada que ordenar todavía
+    if (Object.values(categories).every(arr => arr.length === 0)) {
+        return;
+    }
+
+    let routeHTML = `<h3><i class="fas fa-route"></i> Tu Ruta Sugerida</h3><ol>`;
+    
+    // Títulos para cada sección
+    const titles = {
+        IU: '1. ¡Hazlo Ahora! (Importante y Urgente)',
+        INU: '2. Planifica (Importante, No Urgente)',
+        NIU: '3. Delega o Hazlo Rápido (No Importante, Urgente)',
+        NINU: '4. Considera Eliminar (No Importante, No Urgente)'
+    };
+
+    ['IU', 'INU', 'NIU', 'NINU'].forEach(key => {
+        if (categories[key].length > 0) {
+            routeHTML += `<strong style="display: block; margin-top: 15px;">${titles[key]}</strong>`;
+            categories[key].forEach(dest => {
+                routeHTML += `<li>${dest.name} (${dest.location})</li>`;
+            });
+        }
+    });
+
+    routeHTML += `</ol>`;
+    DOM.sortedRouteContainer.innerHTML = routeHTML;
 }
 
 // Show Interest Modal
@@ -424,6 +556,11 @@ function loadUserData() {
     const favorites = localStorage.getItem('userFavorites');
     if (favorites) {
         state.favorites = JSON.parse(favorites);
+    }
+    
+    const routePrefs = localStorage.getItem('routePreferences');
+    if (routePrefs) {
+        state.routePreferences = JSON.parse(routePrefs);
     }
     
     // Load initial data
