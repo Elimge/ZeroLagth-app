@@ -483,7 +483,7 @@ function displaySortedRoute() {
         const dest = state.destinations.find(d => d.id === favId);
         const prefs = state.routePreferences[favId];
         if (!dest || !prefs || typeof prefs.important === 'undefined' || typeof prefs.urgent === 'undefined') {
-            return; // Omitir si no se han respondido ambas preguntas
+            return; 
         }
 
         if (prefs.important && prefs.urgent) categories.IU.push(dest);
@@ -492,31 +492,43 @@ function displaySortedRoute() {
         else categories.NINU.push(dest);
     });
 
-    // No mostrar el título si no hay nada que ordenar todavía
     if (Object.values(categories).every(arr => arr.length === 0)) {
         return;
     }
 
-    let routeHTML = `<h3><i class="fas fa-route"></i> Tu Ruta Sugerida</h3><ol>`;
+    // Usamos las nuevas clases CSS que acabamos de crear
+    let routeHTML = `
+        <div class="sorted-route-panel">
+            <h3><i class="fas fa-route"></i> Tu Ruta Sugerida</h3>
+            <ol class="sorted-route-list">
+    `;
     
-    // Títulos para cada sección
-    const titles = {
-        IU: '1. ¡Hazlo Ahora! (Importante y Urgente)',
-        INU: '2. Planifica (Importante, No Urgente)',
-        NIU: '3. Delega o Hazlo Rápido (No Importante, Urgente)',
-        NINU: '4. Considera Eliminar (No Importante, No Urgente)'
+    // Emojis y Títulos para cada sección
+    const sectionDetails = {
+        IU: { title: '¡Hazlo Ahora! (Importante y Urgente)', emoji: '🔥' },
+        INU: { title: 'Planifica (Importante, No Urgente)', emoji: '🗓️' },
+        NIU: { title: 'Delega o Hazlo Rápido (No Importante, Urgente)', emoji: '⚡' },
+        NINU: { title: 'Considera Omitir (No Importante, No Urgente)', emoji: '🗑️' }
     };
 
     ['IU', 'INU', 'NIU', 'NINU'].forEach(key => {
         if (categories[key].length > 0) {
-            routeHTML += `<strong style="display: block; margin-top: 15px;">${titles[key]}</strong>`;
+            // Añadimos el título de la categoría
+            routeHTML += `<h4 class="route-category-title">${sectionDetails[key].emoji} ${sectionDetails[key].title}</h4>`;
+            
+            // Añadimos los destinos de esa categoría
             categories[key].forEach(dest => {
-                routeHTML += `<li>${dest.name} (${dest.location})</li>`;
+                routeHTML += `
+                    <li class="route-item">
+                        <span class="route-indicator indicator-${key.toLowerCase()}"></span>
+                        ${dest.name} <span style="color: #888; margin-left: 8px;">(${dest.location})</span>
+                    </li>
+                `;
             });
         }
     });
 
-    routeHTML += `</ol>`;
+    routeHTML += `</ol></div>`;
     DOM.sortedRouteContainer.innerHTML = routeHTML;
 }
 
@@ -562,7 +574,7 @@ function loadUserData() {
     if (routePrefs) {
         state.routePreferences = JSON.parse(routePrefs);
     }
-    
+
     // Load initial data
     loadDashboardData();
 }

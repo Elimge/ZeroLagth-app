@@ -1172,3 +1172,68 @@ tr:hover {
         height: 30px;
     }
 }
+
+/* --- Estilos para la página "Arma tu Ruta" --- */
+
+/* Estilo para el panel completo de la ruta sugerida */
+.sorted-route-panel {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo para la lista ordenada */
+.sorted-route-list {
+    list-style: none; /* Quitamos los números por defecto */
+    padding-left: 0;
+    counter-reset: route-counter; /* Iniciamos nuestro propio contador */
+}
+
+/* Título de cada categoría (ej. "¡Hazlo Ahora!") */
+.route-category-title {
+    font-size: 1.1em;
+    color: var(--dark);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Cada elemento de la lista (el <li>) */
+.route-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 5px;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 16px;
+}
+
+.route-item::before {
+    counter-increment: route-counter; /* Incrementamos nuestro contador */
+    content: counter(route-counter) ". "; /* Mostramos el número */
+    font-weight: 600;
+    margin-right: 10px;
+    color: var(--primary);
+}
+
+/* El círculo de color (El indicador de Eisenhower) */
+.route-indicator {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0; /* Evita que el círculo se encoja */
+}
+
+/* Colores específicos para cada categoría */
+.indicator-iu { background-color: #dc3545; } /* Rojo para Urgente/Importante */
+.indicator-inu { background-color: var(--accent); } /* Verde para Importante/No Urgente */
+.indicator-niu { background-color: var(--secondary); } /* Amarillo para No Importante/Urgente */
+.indicator-ninu { background-color: #6c757d; } /* Gris para el resto */
+
+/* Un estilo extra para que los botones Sí/No sean un poco más pequeños */
+.btn-sm {
+    padding: 6px 16px;
+    font-size: 14px;
+}
