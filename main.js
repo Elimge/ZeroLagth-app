@@ -381,6 +381,7 @@ function changePage(page) {
     DOM.favoritesPage.style.display = 'none';
     DOM.testimonialsPage.style.display = 'none';
     DOM.adminPage.style.display = 'none';
+    DOM.routePlannerPage.style.display = 'none'; 
     
     // Remove active class from sidebar links
     document.querySelectorAll('.sidebar-link').forEach(link => {
