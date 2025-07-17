@@ -1,0 +1,178 @@
+[
+    {
+        "id": 1,
+        "name": "Playa de Puerto Colombia",
+        "description": "Una hermosa playa cercana a Barranquilla, ideal para disfrutar del sol y el mar Caribe.",
+        "imageUrl": "https://images.canal1.com.co/wp-content/uploads/2020/09/18111507/playas-puerto-colombia.jpg",
+        "category": "recreativo",
+        "location": "Puerto Colombia",
+        "coordinates": "10.9881, -74.9568",
+        "urgency": "high",
+        "importance": "high"
+    },
+    {
+        "id": 2,
+        "name": "Museo del Caribe",
+        "description": "Un espacio cultural que presenta la historia, cultura y tradiciones del Caribe colombiano.",
+        "imageUrl": "https://viajandox.com.co/uploads/Museo%20del%20Caribe_3.jpg",
+        "category": "cultural",
+        "location": "Barranquilla",
+        "coordinates": "10.9877, -74.7889",
+        "urgency": "low",
+        "importance": "high"
+    },
+    {
+        "id": 3,
+        "name": "Volcán del Totumo",
+        "description": "Un volcán de lodo donde los visitantes pueden disfrutar de un baño de lodo mineral con propiedades terapéuticas.",
+        "imageUrl": "https://mundoturs.com/wp-content/uploads/2024/02/volcan-del-totumo-colombia-mundoturs-cartagena.webp",
+        "category": "natural",
+        "location": "Santa Catalina",
+        "coordinates": "10.7453, -75.2405",
+        "urgency": "high",
+        "importance": "low"
+    },
+    {
+        "id": 4,
+        "name": "Plaza de la Paz",
+        "description": "Plaza emblemática de Barranquilla donde se realizan importantes eventos culturales y cívicos.",
+        "imageUrl": "https://files.alerta.rcnradio.com/alerta_caribe/public/2019-12/plaza-de-la-paz2_3_0.jpg?M_MW8TKHKzbDYN_ERpCCKdP2yDhF58rZ",
+        "category": "historico",
+        "location": "Barranquilla",
+        "coordinates": "10.9942, -74.7994",
+        "urgency": "low",
+        "importance": "low"
+    },
+    {
+        "id": 5,
+        "name": "Restaurante La Cueva",
+        "description": "Histórico restaurante que era punto de encuentro del Grupo de Barranquilla, liderado por Gabriel García Márquez.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2015/06/30/18/36/saint-826688_1280.jpg",
+        "category": "gastronomico",
+        "location": "Barranquilla",
+        "coordinates": "10.9942, -74.7994",
+        "urgency": "high",
+        "importance": "high"
+    },
+    {
+        "id": 6,
+        "name": "Universidad del Atlántico",
+        "description": "Principal institución de educación superior pública del departamento del Atlántico.",
+        "imageUrl": "https://cdn.pixabay.com/photo/2016/11/14/05/15/academic-1822682_1280.jpg",
+        "category": "educativo",
+        "location": "Barranquilla",
+        "coordinates": "10.9942, -74.7994",
+        "urgency": "low",
+        "importance": "high"
+    },
+    {
+        "id": 7,
+        "name": "Estadio Metropolitano",
+        "description": "Estadio Roberto Meléndez, sede de la Selección Colombia y del Junior de Barranquilla.",
+        "imageUrl": "https://www.shutterstock.com/shutterstock/videos/1090340921/thumb/1.jpg?ip=x480",
+        "category": "recreativo",
+        "location": "Barranquilla",
+        "coordinates": "10.9312, -74.7972",
+        "urgency": "high",
+        "importance": "low"
+    },
+    {
+        "id": 8,
+        "name": "Castillo de Salgar",
+        "description": "Fortaleza histórica construida en el siglo XVII para defenderse de los piratas.",
+        "imageUrl": "https://i.pinimg.com/originals/c3/16/28/c31628013300e905007f1ecf42418774.jpg",
+        "category": "historico",
+        "location": "Puerto Colombia",
+        "coordinates": "10.9767, -74.9445",
+        "urgency": "low",
+        "importance": "low"
+    },
+    {
+        "id": 9,
+        "name": "Teatro Amira de la Rosa",
+        "description": "Principal escenario cultural de Barranquilla, dedicado a las artes escénicas.",
+        "imageUrl": "https://i.ytimg.com/vi/rkdDB9F8Mo8/maxresdefault.jpg",
+        "category": "cultural",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 10,
+        "name": "Centro Comercial Buenavista",
+        "description": "Uno de los principales centros comerciales de Barranquilla, con una amplia oferta de tiendas y entretenimiento.",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.bCYnSdzWAs20wmID9PvEWgHaD5?rs=1&pid=ImgDetMain&o=7&rm=3",
+        "category": "recreativo",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 11,
+        "name": "Zoológico de Barranquilla",
+        "description": "Uno de los zoológicos más importantes de la región, con una gran variedad de especies.",
+        "imageUrl": "https://cvnoticias.com.co/wp-content/uploads/2020/08/WhatsApp-Image-2020-08-17-at-5.33.28-PM.jpeg",
+        "category": "natural",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 12,
+        "name": "Parque Isla de Salamanca",
+        "description": "Un parque natural que protege los ecosistemas de la región y ofrece actividades al aire libre.",
+        "imageUrl": "https://media.metrolatam.com/2018/02/22/parquesalamanca4-7f9054b9d4fb5013b2e271c82a5d5585.jpg",
+        "category": "natural",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 13,
+        "name": "Malecón del Río",
+        "description": "Un espacio público a lo largo del río Magdalena, ideal para actividades recreativas y culturales.",
+        "imageUrl": "https://zonacero.com/sites/default/files/2019/12/27/fotos_contenido_vertical/gran_malecon_15.jpg",
+        "category": "recreativo",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 14,
+        "name": "Biblioteca popular del barrio la Paz",
+        "description": "Un espacio cultural y educativo que promueve la lectura y el conocimiento.",
+        "imageUrl": "https://bogota.gov.co/sites/default/files/2023-04/biblioteca-maria-paz_0.jpg",
+        "category": "educativo",
+        "location": "Barranquilla",
+        "coordinates": "10.9876, -74.8042",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 15,
+        "name": "La Casa del Marisco",
+        "description": "Restaurante emblemático de Barranquilla especializado en mariscos frescos y platos típicos del Caribe.",
+        "imageUrl": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noN2AaQUQ-5424Bz4P_G7WhmfUEGLTFYiKtDxyQoFb3V5z5jzDOgiepLCWpV_08QIYHuQN2Q35SvkqXlNSGg8Rf3gq8iGpDT_p_HyVHcnmuQlyasSCk_1JDRofJm7fZD8z3Bpmi=w426-h240-k-no",
+        "category": "gastronomico",
+        "location": "Barranquilla",
+        "coordinates": "11.0041, -74.8069",
+        "urgency": "medium",
+        "importance": "high"
+    },
+    {
+        "id": 16,
+        "name": "El Pulpo Paul",
+        "description": "Famoso restaurante de Puerto Colombia conocido por su ceviche y cocina de mar tradicional.",
+        "imageUrl": "https://i.pinimg.com/originals/65/a2/13/65a21330a424c4e3a0141888f0bce4a1.jpg",
+        "category": "gastronomico",
+        "location": "Barranquilla",
+        "coordinates": "10.9870, -74.9540",
+        "urgency": "low",
+        "importance": "high"
+    }
+]
