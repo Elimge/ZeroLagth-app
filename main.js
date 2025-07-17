@@ -127,6 +127,9 @@ function showAppUI() {
     DOM.appHeader.style.display = 'block';
     DOM.appSidebar.style.display = 'block';
     DOM.appContent.style.display = 'block';
+    // Mostrar el contenedor principal cuando está logueado
+    const appAll = document.getElementById('appAll');
+    if (appAll) appAll.style.display = 'flex';
     
     // Update user name display
     DOM.userNameDisplay.textContent = state.user.name;
@@ -152,6 +155,9 @@ function showAuthUI() {
     DOM.appHeader.style.display = 'none';
     DOM.appSidebar.style.display = 'none';
     DOM.appContent.style.display = 'none';
+    // Ocultar el contenedor principal cuando está en login
+    const appAll = document.getElementById('appAll');
+    if (appAll) appAll.style.display = 'none';
 }
 
 // Setup Event Listeners
@@ -614,7 +620,7 @@ function populateEisenhowerMatrix(destinations) {
 
     // Define relationships between categories
     const relatedCategories = {
-        'gastronomico': ['cultural', 'recreativo'],
+        'gastronomico': ['recreativo'],
         'cultural': ['historico', 'educativo'],
         'educativo': ['cultural', 'historico'],
         'recreativo': ['natural', 'gastronomico'],
