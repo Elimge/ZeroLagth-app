@@ -465,19 +465,19 @@ function renderRoutePlannerPage() {
         DOM.routeQuestionsContainer.appendChild(card);
     });
 
-    // Generar la ruta ordenada si ya hay preferencias
+    // Generate the organized path if there are preferences.
     displaySortedRoute();
     hideLoader();
 }
 
 function displaySortedRoute() {
-    DOM.sortedRouteContainer.innerHTML = ''; // Limpiar
+    DOM.sortedRouteContainer.innerHTML = ''; // Clean
 
     const categories = {
-        'IU': [], // Importante y Urgente
-        'INU': [], // Importante, No Urgente
-        'NIU': [], // No Importante, Urgente
-        'NINU': [] // No Importante, No Urgente
+        'IU': [], // Important and Urgent
+        'INU': [], // Important, No Urgent
+        'NIU': [], // No Important, Urgent
+        'NINU': [] // No Important, No Urgent
     };
 
     state.favorites.forEach(favId => {
@@ -497,14 +497,12 @@ function displaySortedRoute() {
         return;
     }
 
-    // Usamos las nuevas clases CSS que acabamos de crear
     let routeHTML = `
         <div class="sorted-route-panel">
             <h3><i class="fas fa-route"></i> Tu Ruta Sugerida</h3>
             <ol class="sorted-route-list">
     `;
-    
-    // Emojis y Títulos para cada sección
+
     const sectionDetails = {
         IU: { title: '¡Hazlo Ahora! (Importante y Urgente)', emoji: '🔥' },
         INU: { title: 'Planifica (Importante, No Urgente)', emoji: '🗓️' },
@@ -514,10 +512,10 @@ function displaySortedRoute() {
 
     ['IU', 'INU', 'NIU', 'NINU'].forEach(key => {
         if (categories[key].length > 0) {
-            // Añadimos el título de la categoría
+            // Add the category title
             routeHTML += `<h4 class="route-category-title">${sectionDetails[key].emoji} ${sectionDetails[key].title}</h4>`;
             
-            // Añadimos los destinos de esa categoría
+            // Add the destinies
             categories[key].forEach(dest => {
                 routeHTML += `
                     <li class="route-item">
@@ -627,7 +625,7 @@ function populateEisenhowerMatrix(destinations) {
     // Use a Set to track added destination IDs to avoid duplicates
     const addedIds = new Set();
 
-    // 1. "Tus preferencias" quadrant (Urgent & Important)
+    // 1. "Your preferences" quadrant (Urgent & Important)
     destinations.forEach(destination => {
         if (state.userInterests.includes(destination.category)) {
             DOM.urgentImportantContainer.appendChild(createDestinationCard(destination));
@@ -635,7 +633,7 @@ function populateEisenhowerMatrix(destinations) {
         }
     });
 
-    // 2. "Lugares relacionados" quadrant (Not Urgent & Important)
+    // 2. "Related" quadrant (Not Urgent & Important)
     destinations.forEach(destination => {
         if (
             !addedIds.has(destination.id) &&
