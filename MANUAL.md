@@ -79,4 +79,6 @@ Si has iniciado sesión como administrador, verás un enlace de **"Admin"** en e
 3.  **Editar un Destino:** Haz clic en el **ícono del lápiz (✏️)** en la columna "Acciones" para modificar los detalles de un destino existente.
 4.  **Eliminar un Destino:** Haz clic en el **ícono de la papelera (🗑️)** para eliminar permanentemente un destino.
 
-Do you speak english? please, click here ---> **[Manual in english](https://github.com/Elimge/ZeroLagth-app/blob/develop/USAGE.md)**.
+---
+
+Do you speak english? please, click here ---> **[Manual in english](./USAGE.md)**.
