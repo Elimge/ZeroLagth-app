@@ -2,6 +2,13 @@
 
 This project is a feature-rich Single Page Application (SPA) designed to serve as a tourist discovery and route-planning platform. It's built from the ground up using modern vanilla JavaScript (ES6+), HTML5, and CSS, without relying on any external frameworks. The application features a complete client-side routing system, role-based authentication, a unique implementation of the Eisenhower Matrix for personalizing recommendations, and full CRUD (Create, Read, Update, Delete) functionality for managing tourist destinations.
 
+### 🚀 **[Live Demo Here](https://elimge.github.io/ZeroLagth-app/)** 🚀
+
+You can try the fully deployed application right in your browser at the following link:
+
+**[https://elimge.github.io/ZeroLagth-app/](https://elimge.github.io/ZeroLagth-app/)**
+
+
 ## Features
 
 This project implements a complete system with the following features:
@@ -52,11 +59,11 @@ Follow these steps to get a local copy up and running.
 
 1.  **Clone the repository:**
 ```bash
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/Elimge/ZeroLagth-app.git
 ```
 2.  **Navigate to the project directory:**
 ```bash
-    cd your-repo-name
+    cd zerolagth-app
 ```
 3.  **Run the application:**
     *   If you have the **Live Server** extension in VS Code, right-click the `index.html` file and select "Open with Live Server".
