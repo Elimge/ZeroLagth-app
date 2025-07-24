@@ -8,7 +8,8 @@
         "location": "Puerto Colombia",
         "coordinates": "10.9881, -74.9568",
         "urgency": "high",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-23T21:44:20"
     },
     {
         "id": 2,
@@ -19,7 +20,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9877, -74.7889",
         "urgency": "low",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-27T14:00:00"
     },
     {
         "id": 3,
@@ -30,7 +32,8 @@
         "location": "Santa Catalina",
         "coordinates": "10.7453, -75.2405",
         "urgency": "high",
-        "importance": "low"
+        "importance": "low",
+        "eventDate": "2025-07-24T09:00:00"
     },
     {
         "id": 4,
@@ -41,7 +44,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9942, -74.7994",
         "urgency": "low",
-        "importance": "low"
+        "importance": "low",
+        "eventDate": "2025-07-26T11:00:00"
     },
     {
         "id": 5,
@@ -52,7 +56,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9942, -74.7994",
         "urgency": "high",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-08-01T20:00:00"
     },
     {
         "id": 6,
@@ -63,7 +68,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9942, -74.7994",
         "urgency": "low",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-29T12:00:00"
     },
     {
         "id": 7,
@@ -74,7 +80,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9312, -74.7972",
         "urgency": "high",
-        "importance": "low"
+        "importance": "low",
+        "eventDate": "2025-07-27T17:30:00"
     },
     {
         "id": 8,
@@ -85,7 +92,8 @@
         "location": "Puerto Colombia",
         "coordinates": "10.9767, -74.9445",
         "urgency": "low",
-        "importance": "low"
+        "importance": "low",
+        "eventDate": "2025-07-28T19:00:00"
     },
     {
         "id": 9,
@@ -96,7 +104,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T18:00:00"
     },
     {
         "id": 10,
@@ -107,7 +116,9 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-08-30T08:30:00"
+
     },
     {
         "id": 11,
@@ -118,7 +129,8 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-27T09:00:00"
     },
     {
         "id": 12,
@@ -129,7 +141,9 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T11:30:00"
+
     },
     {
         "id": 13,
@@ -140,7 +154,9 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T07:00:00"
+
     },
     {
         "id": 14,
@@ -151,7 +167,9 @@
         "location": "Barranquilla",
         "coordinates": "10.9876, -74.8042",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T13:00:00"
+
     },
     {
         "id": 15,
@@ -162,7 +180,9 @@
         "location": "Barranquilla",
         "coordinates": "11.0041, -74.8069",
         "urgency": "medium",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T11:30:00"
+
     },
     {
         "id": 16,
@@ -173,6 +193,7 @@
         "location": "Barranquilla",
         "coordinates": "10.9870, -74.9540",
         "urgency": "low",
-        "importance": "high"
+        "importance": "high",
+        "eventDate": "2025-07-28T13:00:00"
     }
 ]

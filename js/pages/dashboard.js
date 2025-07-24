@@ -109,6 +109,16 @@ export function saveUserInterests() {
 
 function showDestinationDetails(destination) {
     const isFavorite = state.favorites.includes(destination.id);
+    const eventDate = destination.eventDate ? new Date(destination.eventDate) : null;
+        const formattedDate = eventDate ?
+            eventDate.toLocaleDateString('es-CO', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }) : 'Fecha no establecida';
     DOM.destinationDetails.innerHTML = `
         <div class="details-header">
             <div>
@@ -151,11 +161,8 @@ function showDestinationDetails(destination) {
         </div>
         <div class="schedule-section">
             <h3>Horarios Disponibles</h3>
-            <div class="schedule-slots" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
-                <div class="time-slot">9:00 AM - 11:00 AM</div>
-                <div class="time-slot">11:30 AM - 1:30 PM</div>
-                <div class="time-slot">2:00 PM - 4:00 PM</div>
-                <div class="time-slot">4:30 PM - 6:30 PM</div>
+            <div class="schedule-slots"">
+                <div class="time-slot">Fecha: ${formattedDate}</div>
             </div>
         </div>
     `;
