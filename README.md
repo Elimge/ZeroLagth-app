@@ -8,7 +8,6 @@ You can try the fully deployed application right in your browser at the followin
 
 **[https://elimge.github.io/ZeroLagth-app/](https://elimge.github.io/ZeroLagth-app/)**
 
-
 ## Features
 
 This project implements a complete system with the following features:
@@ -19,13 +18,14 @@ This project implements a complete system with the following features:
     *   **Protected Routes:** The custom-built router prevents access to the admin panel if the user is not an administrator.
 
 *   **Personalized User Dashboard:**
-    *   **Eisenhower Matrix for Discovery:** On the main dashboard, destinations are automatically categorized for the user based on their interests into four quadrants: "Your Preferences," "Related Places," "You Might Like," and "Other Places."
+    *   **Automated Discovery with the Eisenhower Matrix:** The main dashboard automatically categorizes destinations for the user based on their **pre-selected interests**. The four quadrants are populated as follows: "Your Preferences" (direct interest matches), "Related Places" (destinations in similar categories), "You Might Like," and "Other Places."
     *   **Interactive Destination Cards:** Users can view details, add places to their favorites, and explore what the region has to offer.
     *   **Detailed Modal View:** Clicking on a destination opens a rich modal with a full description, image gallery, and mock data for available guides and schedules.
 
 *   **Custom Route Planner:**
-    *   Users can build a personalized travel plan from their list of favorite destinations.
-    *   By classifying each favorite spot as "Urgent" and/or "Important," the application generates a prioritized itinerary, suggesting what to do now, what to plan for later, and what could be skipped.
+    *   Users build a personalized travel plan in the **"Arma tu Ruta"** (Build Your Route) section from their list of favorite destinations.
+    *   Here, users manually classify each favorite spot as **"Urgent"** and/or **"Important"**.
+    *   The application uses this input to generate a prioritized itinerary, suggesting what to do now, what to plan for later, and what could be skipped.
 
 *   **Administrator Dashboard:**
     *   **Full CRUD Functionality:** Administrators have exclusive access to a panel where they can **Create, Read, Update, and Delete** destinations.
@@ -84,7 +84,7 @@ You can also register new "user" accounts through the registration page.
 
 ## File Structure
 ```bash
-    /zerolagth-app
+/zerolagth-app
 │
 ├── .gitignore
 ├── index.html

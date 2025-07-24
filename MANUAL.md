@@ -31,14 +31,14 @@ La primera vez que inicies sesión, se te pedirá que selecciones tus intereses.
 
 ### El Dashboard: Descubriendo Destinos
 
-El dashboard es tu centro de operaciones para encontrar lugares nuevos y emocionantes. Está organizado en cuatro categorías inteligentes basadas en tus intereses.
+El dashboard es tu centro de operaciones para encontrar lugares nuevos y emocionantes. Está organizado automáticamente en cuatro cuadrantes para facilitar el descubrimiento, **basándose en los intereses que seleccionaste al iniciar sesión**.
 
-1.  **Tus Preferencias:** Destinos que coinciden directamente con los intereses que seleccionaste.
-2.  **Lugares Relacionados:** Sitios de categorías similares a las de tus intereses.
-3.  **Podría Interesarte:** Otros destinos populares o interesantes.
-4.  **Otros Lugares:** El resto de las ubicaciones disponibles.
+*   **Tus Preferencias (Cuadrante Superior Izquierdo):** Muestra los destinos que coinciden directamente con las categorías de tu interés. ¡Estos son los lugares que creemos que te encantarán!
+*   **Lugares Relacionados (Cuadrante Superior Derecho):** Aquí encontrarás destinos de categorías similares a las que te gustan. Por ejemplo, si te interesa lo "Cultural", aquí podrías ver lugares "Históricos".
+*   **Podría Interesarte (Cuadrante Inferior Izquierdo):** Una selección de otros destinos populares que podrían llamar tu atención.
+*   **Otros Lugares (Cuadrante Inferior Derecho):** El resto de las ubicaciones disponibles para que no te pierdas de nada.
 
-Haz clic en cualquier tarjeta para ver más detalles, o pulsa el **ícono de corazón (❤️)** para añadirla a tus favoritos.
+En esta sección, simplemente explora y añade los lugares que te gusten a tu lista de favoritos pulsando el **ícono de corazón (❤️)**.
 
 ---
 
@@ -54,19 +54,21 @@ La página de **Favoritos** muestra todos los destinos que has guardado.
 
 ### Arma tu Ruta: El Planificador de Viajes
 
-¡Aquí es donde ocurre la magia! La página **"Arma tu Ruta"** te ayuda a crear un plan de viaje priorizado a partir de tus lugares favoritos.
+¡Aquí es donde ocurre la magia! La página **"Arma tu Ruta"** transforma tu lista de favoritos en un plan de viaje inteligente y priorizado. A diferencia del Dashboard, **aquí tú tienes el control total** para clasificar cada lugar.
 
-1.  **Ve al Planificador:** Haz clic en "Arma tu Ruta" en el menú lateral. Verás una lista de tus destinos favoritos.
+1.  **Ve al Planificador:** Haz clic en "Arma tu Ruta" en el menú lateral. Verás una tarjeta por cada destino que hayas añadido a tus favoritos.
 
-2.  **Clasifica cada Destino:** Para cada lugar, debes responder dos preguntas:
-    *   **¿Es Urgente?:** ¿Es una visita obligada para ti en este viaje?
-    *   **¿Es Importante?:** ¿Este lugar es muy significativo para ti (ej. el viaje de tus sueños)?
+2.  **Clasifica cada Destino:** Para cada lugar, la aplicación te pedirá que respondas dos preguntas simples pero poderosas:
+    *   **¿Es Urgente?:** ¿Consideras que esta visita no puede esperar?
+    *   **¿Es Importante?:** ¿Este lugar tiene un alto valor personal o es clave para tu viaje?
 
-3.  **Visualiza tu Ruta Sugerida:** A medida que respondes, un itinerario priorizado aparecerá debajo, organizado automáticamente para ti:
-    *   **🔥 ¡Hazlo Ahora!:** Importante y Urgente. Son tus máximas prioridades.
-    *   **🗓️ Planifica:** Importante, pero no Urgente. Agenda estas actividades.
-    *   **⚡ Delega o Hazlo Rápido:** Urgente, pero no Importante.
-    *   **🗑️ Considera Omitir:** Ni Importante ni Urgente. Puedes saltártelos si tienes poco tiempo.
+3.  **Define Pros y Contras:** Después de clasificar, la app te pedirá que escribas los pros (beneficios de ir) y los contras (desventajas de no ir). Esto te ayuda a reflexionar y, además, activa las notificaciones para recordarte tu visita más adelante.
+
+4.  **Visualiza tu Ruta Sugerida:** Inmediatamente después de clasificar tus favoritos, un itinerario priorizado aparecerá en la parte inferior, organizado según la Matriz de Eisenhower:
+    *   **🔥 ¡Hazlo Ahora! (Importante y Urgente):** Tus máximas prioridades.
+    *   **🗓️ Planifica (Importante, No Urgente):** Actividades valiosas que puedes agendar con más calma.
+    *   **⚡ Delega o Hazlo Rápido (Urgente, No Importante):** Tareas que deben hacerse pronto pero no son críticas para tus metas principales.
+    *   **🗑️ Considera Omitir (No Importante, No Urgente):** Lugares que podrías dejar para otra ocasión si tienes poco tiempo.
 
 ---
 

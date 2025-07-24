@@ -25,48 +25,40 @@ To begin using the app, you first need to create an account or log in.
 > *   **Admin:** `admin@example.com` (password: `admin123`)
 > *   **User:** `user@example.com` (password: `user123`)
 
-Once you log in for the first time, you will be asked to select your interests. This helps us personalize the recommendations for you!
+The first time you log in, you will be asked to select your interests. This helps us personalize the recommendations for you!
 
 ---
 
 ### The Dashboard: Discovering Destinations
 
-The dashboard is your main hub for finding new and exciting places. It's organized into four smart categories based on your interests.
+The dashboard is your main hub for finding new and exciting places. It is automatically organized into four quadrants to facilitate discovery, **based on the interests you selected upon login**.
 
-1.  **Tus Preferencias (Your Preferences):** Destinations that directly match the interests you selected.
-2.  **Lugares Relacionados (Related Places):** Places from categories related to your interests.
-3.  **Podría Interesarte (You Might Like):** Other popular or interesting destinations.
-4.  **Otros Lugares (Other Places):** The rest of the available locations.
+*   **Tus Preferencias (Your Preferences):** Displays destinations that directly match your selected interest categories. These are the places we think you'll love!
+*   **Lugares Relacionados (Related Places):** Here you'll find destinations from categories similar to your interests. For example, if you like "Cultural" places, you might see "Historical" sites here.
+*   **Podría Interesarte (You Might Like):** A selection of other popular destinations that might catch your eye.
+*   **Otros Lugares (Other Places):** The rest of the available locations, so you don't miss out on anything.
 
-Click on any card to see more details, or click the **heart icon (❤️)** to add it to your favorites.
-
----
-
-### Managing Your Favorites
-
-The **"Favoritos"** page shows all the destinations you have saved.
-
-1.  Navigate to the "Favoritos" page from the sidebar menu.
-2.  Here you will see a grid of all your liked places.
-3.  You can click on any card to view its details again or click the heart icon to remove it from your favorites.
+In this section, your goal is to explore and add places you like to your favorites list by clicking the **heart icon (❤️)**.
 
 ---
 
 ### Building Your Route: The Trip Planner
 
-This is where the magic happens! The **"Arma tu Ruta"** page helps you create a prioritized travel plan from your favorite places.
+This is where the magic happens! The **"Arma tu Ruta"** (Build Your Route) page transforms your list of favorites into a smart, prioritized travel plan. Unlike the Dashboard, **here you have full control** to classify each location.
 
-1.  **Go to the Planner:** Click on "Arma tu Ruta" in the sidebar. You will see a list of your favorite destinations.
+1.  **Go to the Planner:** Click on "Arma tu Ruta" in the sidebar. You will see a card for each destination you've added to your favorites.
 
-2.  **Classify Each Destination:** For each place, you must answer two questions:
-    *   **¿Es Urgente? (Is it Urgent?):** Is this a must-see for you on this trip?
-    *   **¿Es Importante? (Is it Important?):** Is this place highly significant to you (e.g., a lifelong dream destination)?
+2.  **Classify Each Destination:** For each place, the application will ask you to answer two simple but powerful questions:
+    *   **¿Es Urgente? (Is it Urgent?):** Do you feel this visit can't wait?
+    *   **¿Es Importante? (Is it Important?):** Does this place have high personal value or is it key to your trip?
 
-3.  **View Your Suggested Route:** As you answer the questions, a prioritized itinerary will appear below, automatically organized for you:
+3.  **Define Pros and Cons:** After classifying, the app will prompt you to list the pros (benefits of going) and cons (disadvantages of not going). This helps you reflect on your choices and also enables notifications to remind you of your visit later.
+
+4.  **View Your Suggested Route:** Immediately after you classify your favorites, a prioritized itinerary will appear at the bottom, organized according to the Eisenhower Matrix:
     *   **🔥 ¡Hazlo Ahora! (Do It Now!):** Important and Urgent. These are your top priorities.
-    *   **🗓️ Planifica (Plan):** Important, but not Urgent. Schedule these activities.
-    *   **⚡ Delega o Hazlo Rápido (Delegate or Do It Quick):** Urgent, but not Important.
-    *   **🗑️ Considera Omitir (Consider Omitting):** Not Important and Not Urgent. You can skip these if you're short on time.
+    *   **🗓️ Planifica (Plan):** Important, but Not Urgent. Valuable activities you can schedule with less rush.
+    *   **⚡ Delega o Hazlo Rápido (Delegate or Do It Quick):** Urgent, but Not Important. Tasks that should be done soon but aren't critical to your main goals.
+    *   **🗑️ Considera Omitir (Consider Omitting):** Not Important and Not Urgent. Places you could skip if you're short on time.
 
 ---
 
