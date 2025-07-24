@@ -184,17 +184,6 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.logo span {
-    color: var(--secondary);
 }
 
 .nav-links {
@@ -1278,4 +1267,9 @@ tr:hover {
 .btn-sm {
     padding: 6px 16px;
     font-size: 14px;
+}
+
+img.logo{
+    aspect-ratio: 1/1;
+    width: 95px;
 }
