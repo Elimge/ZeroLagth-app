@@ -22,10 +22,12 @@ This project implements a complete system with the following features:
     *   **Interactive Destination Cards:** Users can view details, add places to their favorites, and explore what the region has to offer.
     *   **Detailed Modal View:** Clicking on a destination opens a rich modal with a full description, image gallery, and mock data for available guides and schedules.
 
-*   **Custom Route Planner:**
-    *   Users build a personalized travel plan in the **"Arma tu Ruta"** (Build Your Route) section from their list of favorite destinations.
-    *   Here, users manually classify each favorite spot as **"Urgent"** and/or **"Important"**.
-    *   The application uses this input to generate a prioritized itinerary, suggesting what to do now, what to plan for later, and what could be skipped.
+*   **Advanced, Interactive Route Planner:**
+    *   Users transform their favorite places into a smart travel plan via the **"Arma tu Ruta"** (Build Your Route) page.
+    *   **Manual Prioritization:** Users classify each destination as "Urgent" and/or "Important" to feed the planning logic.
+    *   **Pros & Cons Analysis:** The app prompts users to input the pros of visiting and the cons of missing a location, encouraging thoughtful planning.
+    *   **Automated Notifications:** Leveraging the native Browser Notification API, the app schedules reminders for upcoming events based on user-provided dates.
+    *   **Dynamic Itinerary Generation:** Based on user input, the application generates a visually organized and prioritized route, suggesting what to do now, what to plan for later, and what to consider omitting.
 
 *   **Administrator Dashboard:**
     *   **Full CRUD Functionality:** Administrators have exclusive access to a panel where they can **Create, Read, Update, and Delete** destinations.

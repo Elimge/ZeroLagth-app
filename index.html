@@ -1,41 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Basic page metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon for the browser tab -->
+    <link rel="shortcut icon" href="./js/logo.png" type="image/png">
+    
+    <!-- Application Title -->
     <title>Q'rramba Tours - Descubre el Caribe Colombiano</title>
 
-    <!-- Font Awesome & Google Fonts -->
+    <!-- External Fonts and Icons -->
+    <!-- Font Awesome for icons (e.g., hearts, calendars, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for custom typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Import the main stylesheet for the application -->
+    <!-- Main application stylesheet -->
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-    <!-- Loading Spinner -->
+    <!-- ============================================================================== -->
+    <!-- GLOBAL UI ELEMENTS                                                              -->
+    <!-- ============================================================================== -->
+
+    <!-- Loading Spinner: Shown during async operations. Controlled by ui.js -->
     <div class="loader">
         <div class="spinner"></div>
     </div>
 
-    <!-- Authentication Section -->
+    <!-- ============================================================================== -->
+    <!-- AUTHENTICATION SECTION (Visible when logged out)                               -->
+    <!-- ============================================================================== -->
     <section class="auth-container" id="authSection">
         <div class="auth-overlay">
             <div class="auth-card">
                 <h2 style="margin-bottom: 20px; color: var(--primary);">Bienvenido a Q'rramba Tours</h2>
                 <p style="margin-bottom: 30px; color: #666;">Descubre los mejores lugares del Caribe colombiano</p>
+                
+                <!-- Tabs to switch between Login and Register forms -->
                 <div class="auth-tabs">
                     <button class="auth-tab active" id="loginTab">Iniciar Sesión</button>
                     <button class="auth-tab" id="registerTab">Registrarse</button>
                 </div>
+                
+                <!-- Login Form -->
                 <form class="auth-form active" id="loginForm">
                     <div class="form-group"><input type="email" class="form-control" id="loginEmail" placeholder="Correo electrónico" required><div class="error-message" id="loginEmailError">Por favor ingresa un correo válido.</div></div>
                     <div class="form-group"><input type="password" class="form-control" id="loginPassword" placeholder="Contraseña" required><div class="error-message" id="loginPasswordError">La contraseña debe tener al menos 6 caracteres.</div></div>
                     <div style="text-align: right; margin-bottom: 20px;"><a href="javascript:void(0)">¿Olvidaste tu contraseña?</a></div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar Sesión</button>
                 </form>
+
+                <!-- Register Form -->
                 <form class="auth-form" id="registerForm">
                     <div class="form-group"><input type="text" class="form-control" id="registerName" placeholder="Nombre completo" required><div class="error-message" id="registerNameError">Por favor ingresa tu nombre.</div></div>
                     <div class="form-group"><input type="email" class="form-control" id="registerEmail" placeholder="Correo electrónico" required><div class="error-message" id="registerEmailError">Por favor ingresa un correo válido.</div></div>
@@ -47,17 +67,25 @@
         </div>
     </section>
 
-    <!-- Main Application -->
+    <!-- ============================================================================== -->
+    <!-- MAIN APPLICATION (Visible when logged in)                                      -->
+    <!-- ============================================================================== -->
+
+    <!-- Header Section -->
     <header class="header" id="appHeader">
         <div class="container">
             <nav class="navbar">
-                <a href="javascript:void(0)" class="logo">Q'rramba<span>Tours</span></a>
+                <!-- App Logo -->
+                <div>
+                    <img src="./js/logo.png" class="logo" alt="Logo de Q'rramba" title="Q'rramba Tours">
+                </div>
+                <!-- Top Navigation Links -->
                 <div class="nav-links">
                     <a href="javascript:void(0)" class="nav-link active">Inicio</a>
                     <a href="https://github.com/Elimge/ZeroLagth-app/blob/new-feature/MANUAL.md" class="nav-link" target="_blank">Manual</a>
                     <a href="https://github.com/Elimge/ZeroLagth-app/blob/new-feature/USAGE.md" class="nav-link" target="_blank">User Guide</a>
-                    <a href="javascript:void(0)" class="nav-link"></a>
                 </div>
+                <!-- User-specific actions -->
                 <div class="user-actions">
                     <a href="javascript:void(0)" id="logoutBtn" class="btn btn-outline">Cerrar Sesión</a>
                     <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Perfil" class="profile-img">
@@ -66,6 +94,7 @@
         </div>
     </header>
 
+    <!-- Main layout container for sidebar and content -->
     <div class="layout" id="appAll">
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="appSidebar">
@@ -76,20 +105,23 @@
                 </div>
             </div>
             <ul class="sidebar-menu">
+                <!-- Each link uses a data-page attribute for the client-side router -->
                 <li><a href="javascript:void(0)" class="sidebar-link active" data-page="dashboard"><span class="sidebar-icon"><i class="fas fa-th-large"></i></span><span class="sidebar-text">Dashboard</span></a></li>
                 <li><a href="javascript:void(0)" class="sidebar-link" data-page="favorites"><span class="sidebar-icon"><i class="fas fa-heart"></i></span><span class="sidebar-text">Favoritos</span></a></li>
                 <li><a href="javascript:void(0)" class="sidebar-link" data-page="routePlanner"><span class="sidebar-icon"><i class="fas fa-route"></i></span><span class="sidebar-text">Arma tu Ruta</span></a></li>
                 <li><a href="javascript:void(0)" class="sidebar-link" data-page="testimonials"><span class="sidebar-icon"><i class="fas fa-comment"></i></span><span class="sidebar-text">Testimonios</span></a></li>
+                <!-- Admin link is conditionally displayed by ui.js -->
                 <li id="adminMenuItem" style="display: none;"><a href="javascript:void(0)" class="sidebar-link" data-page="admin"><span class="sidebar-icon"><i class="fas fa-cog"></i></span><span class="sidebar-text">Admin</span></a></li>
             </ul>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Main Content Area: The content of this element is swapped by the router -->
         <main class="main-content" id="appContent">
-            <!-- Dashboard Page -->
+            <!-- Dashboard Page View -->
             <div class="page active" id="dashboardPage">
                 <h1 class="section-title">Dashboard</h1>
                 <div class="eisenhower-grid">
+                    <!-- The four quadrants are populated by dashboard.js -->
                     <div class="eisenhower-quadrant urgent-important"><h3 class="quadrant-title"><i class="fas fa-exclamation-circle" style="color: #dc3545;"></i> Tus preferencias</h3><div class="destinations-container" id="urgentImportantContainer"></div></div>
                     <div class="eisenhower-quadrant not-urgent-important"><h3 class="quadrant-title"><i class="fas fa-calendar-check" style="color: var(--accent);"></i> Lugares relacionados</h3><div class="destinations-container" id="notUrgentImportantContainer"></div></div>
                     <div class="eisenhower-quadrant urgent-not-important"><h3 class="quadrant-title"><i class="fas fa-clock" style="color: var(--secondary);"></i> Podría interesarte</h3><div class="destinations-container" id="urgentNotImportantContainer"></div></div>
@@ -97,22 +129,22 @@
                 </div>
             </div>
 
-            <!-- Favorites Page -->
+            <!-- Favorites Page View -->
             <div class="page" id="favoritesPage" style="display: none;">
                 <h1 class="section-title">Mis Lugares Favoritos</h1>
                 <div class="card-grid" id="favoritesGrid"></div>
             </div>
 
+            <!-- Route Planner Page View -->
             <div class="page" id="routePlannerPage" style="display: none;">
                 <h1 class="section-title">Arma tu Ruta Personalizada</h1>
+                <!-- Container for favorite classification cards -->
                 <div id="routeQuestionsContainer"></div>
-                <div id="sortedRouteContainer" style="margin-top: 40px;">
-                    
-                </div>
+                <!-- Container for the generated suggested route -->
+                <div id="sortedRouteContainer" style="margin-top: 40px;"></div>
             </div>
-            <!-- ============================================================================== -->
 
-            <!-- Testimonials Page -->
+            <!-- Testimonials Page View -->
             <div class="page" id="testimonialsPage" style="display: none;">
                 <h1 class="section-title">Testimonios</h1>
                 <div class="testimonials-container">
@@ -122,7 +154,7 @@
                 </div>
             </div>
 
-            <!-- Admin Page -->
+            <!-- Admin Page View -->
             <div class="page" id="adminPage" style="display: none;">
                 <h1 class="section-title">Panel de Administración</h1>
                 <div class="admin-controls">
@@ -137,11 +169,17 @@
         </main>
     </div>
 
-    <!-- Modals -->
-    <div class="modal-overlay" id="interestModal"><div class="modal-container"><div class="modal-header"><h3>Selecciona tus Intereses</h3><button class="modal-close" id="closeInterestModal">×</button></div><div class="modal-body"><p>Para personalizar tu experiencia, selecciona las categorías de lugares que más te interesan:</p><div class="category-options" id="categoryOptions"><div class="category-option" data-category="gastronomico"><span class="category-icon"><i class="fas fa-utensils"></i></span><span class="category-name">Gastronómico</span></div><div class="category-option" data-category="cultural"><span class="category-icon"><i class="fas fa-theater-masks"></i></span><span class="category-name">Cultural</span></div><div class="category-option" data-category="educativo"><span class="category-icon"><i class="fas fa-book"></i></span><span class="category-name">Educativo</span></div><div class="category-option" data-category="recreativo"><span class="category-icon"><i class="fas fa-umbrella-beach"></i></span><span class="category-name">Recreativo</span></div><div class="category-option" data-category="historico"><span class="category-icon"><i class="fas fa-landmark"></i></span><span class="category-name">Histórico</span></div><div class="category-option" data-category="natural"><span class="category-icon"><i class="fas fa-tree"></i></span><span class="category-name">Natural</span></div></div></div><div class="modal-footer"><button class="btn btn-secondary" id="skipInterestBtn">Omitir</button><button class="btn btn-primary" id="saveInterestBtn">Guardar preferencias</button></div></div></div>
-        <div class="modal-overlay" id="destinationModal"><div class="modal-container details-modal-container"><div class="modal-header"><h3>Detalles del Destino</h3><button class="modal-close" id="closeDestinationModal">×</button></div><div class="modal-body"><div class="destination-details" id="destinationDetails"></div></div></div></div>
+    <!-- ============================================================================== -->
+    <!-- MODALS (Hidden by default, shown by ui.js)                                     -->
+    <!-- ============================================================================== -->
 
-    <!-- Modal para Pros -->
+    <!-- Modal for selecting user interests on first login -->
+    <div class="modal-overlay" id="interestModal"><div class="modal-container"><div class="modal-header"><h3>Selecciona tus Intereses</h3><button class="modal-close" id="closeInterestModal">×</button></div><div class="modal-body"><p>Para personalizar tu experiencia, selecciona las categorías de lugares que más te interesan:</p><div class="category-options" id="categoryOptions"><div class="category-option" data-category="gastronomico"><span class="category-icon"><i class="fas fa-utensils"></i></span><span class="category-name">Gastronómico</span></div><div class="category-option" data-category="cultural"><span class="category-icon"><i class="fas fa-theater-masks"></i></span><span class="category-name">Cultural</span></div><div class="category-option" data-category="educativo"><span class="category-icon"><i class="fas fa-book"></i></span><span class="category-name">Educativo</span></div><div class="category-option" data-category="recreativo"><span class="category-icon"><i class="fas fa-umbrella-beach"></i></span><span class="category-name">Recreativo</span></div><div class="category-option" data-category="historico"><span class="category-icon"><i class="fas fa-landmark"></i></span><span class="category-name">Histórico</span></div><div class="category-option" data-category="natural"><span class="category-icon"><i class="fas fa-tree"></i></span><span class="category-name">Natural</span></div></div></div><div class="modal-footer"><button class="btn btn-secondary" id="skipInterestBtn">Omitir</button><button class="btn btn-primary" id="saveInterestBtn">Guardar preferencias</button></div></div></div>
+    
+    <!-- Modal for displaying destination details -->
+    <div class="modal-overlay" id="destinationModal"><div class="modal-container details-modal-container"><div class="modal-header"><h3>Detalles del Destino</h3><button class="modal-close" id="closeDestinationModal">×</button></div><div class="modal-body"><div class="destination-details" id="destinationDetails"></div></div></div></div>
+
+    <!-- Modal for entering the "PROS" of visiting a place (Route Planner) -->
     <div class="modal-overlay" id="prosModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -159,7 +197,7 @@
         </div>
     </div>
 
-    <!-- Modal para Contras -->
+    <!-- Modal for entering the "CONS" of not visiting a place (Route Planner) -->
     <div class="modal-overlay" id="consModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -177,7 +215,7 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmación de Visita -->
+    <!-- Modal for confirming a visit, usually triggered by a notification -->
     <div class="modal-overlay" id="visitConfirmModal">
         <div class="modal-container">
             <div class="modal-header">
@@ -193,11 +231,15 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- Modal form for Adding/Editing a destination (Admin) -->
     <div class="modal-overlay" id="destinationFormModal"><div class="modal-container"><div class="modal-header"><h3 id="formModalTitle">Agregar Nuevo Destino</h3><button class="modal-close" id="closeDestinationFormModal">×</button></div><div class="modal-body"><form id="destinationForm"><input type="hidden" id="destinationId"><div class="form-group"><label for="destinationName">Nombre</label><input type="text" class="form-control" id="destinationName" required></div><div class="form-group"><label for="destinationCategory">Categoría</label><select class="form-control" id="destinationCategory" required><option value="">Selecciona una categoría</option><option value="gastronomico">Gastronómico</option><option value="cultural">Cultural</option><option value="educativo">Educativo</option><option value="recreativo">Recreativo</option><option value="historico">Histórico</option><option value="natural">Natural</option></select></div><div class="form-group"><label for="destinationDescription">Descripción</label><textarea class="form-control" id="destinationDescription" rows="4" required></textarea></div><div class="form-group"><label for="destinationImageUrl">URL de Imagen</label><input type="text" class="form-control" id="destinationImageUrl" required></div><div class="form-group"><label for="destinationLocation">Ubicación</label><input type="text" class="form-control" id="destinationLocation" required></div><div class="form-group"><label for="destinationCoordinates">Coordenadas (latitud, longitud)</label><input type="text" class="form-control" id="destinationCoordinates" placeholder="10.123, -74.456"></div></form></div><div class="modal-footer"><button class="btn btn-secondary" id="cancelDestinationForm">Cancelar</button><button class="btn btn-primary" id="saveDestinationForm">Guardar</button></div></div></div>
 
-    <!-- Application entry point -->
+    <!-- ============================================================================== -->
+    <!-- APPLICATION ENTRY POINT                                                        -->
+    <!-- ============================================================================== -->
+    
+    <!-- Using type="module" is crucial for the import/export syntax to work in the JS files. -->
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

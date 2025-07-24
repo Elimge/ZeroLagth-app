@@ -52,9 +52,11 @@ This is where the magic happens! The **"Arma tu Ruta"** (Build Your Route) page 
     *   **¿Es Urgente? (Is it Urgent?):** Do you feel this visit can't wait?
     *   **¿Es Importante? (Is it Important?):** Does this place have high personal value or is it key to your trip?
 
-3.  **Define Pros and Cons:** After classifying, the app will prompt you to list the pros (benefits of going) and cons (disadvantages of not going). This helps you reflect on your choices and also enables notifications to remind you of your visit later.
+3.  **Define Pros and Cons (New!):** Immediately after classifying a destination, the application will prompt you to list the **pros** (benefits of going) and the **cons** (disadvantages of not going). This step is key for two reasons:
+    *   It helps you reflect on why you want to visit the location.
+    *   It enables **automatic browser notifications** to remind you of your visit if the destination has a scheduled event date.
 
-4.  **View Your Suggested Route:** Immediately after you classify your favorites, a prioritized itinerary will appear at the bottom, organized according to the Eisenhower Matrix:
+4.  **View Your Suggested Route:** As you classify your places, a prioritized itinerary will appear and update at the bottom, organized according to the Eisenhower Matrix:
     *   **🔥 ¡Hazlo Ahora! (Do It Now!):** Important and Urgent. These are your top priorities.
     *   **🗓️ Planifica (Plan):** Important, but Not Urgent. Valuable activities you can schedule with less rush.
     *   **⚡ Delega o Hazlo Rápido (Delegate or Do It Quick):** Urgent, but Not Important. Tasks that should be done soon but aren't critical to your main goals.

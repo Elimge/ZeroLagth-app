@@ -62,13 +62,15 @@ La página de **Favoritos** muestra todos los destinos que has guardado.
     *   **¿Es Urgente?:** ¿Consideras que esta visita no puede esperar?
     *   **¿Es Importante?:** ¿Este lugar tiene un alto valor personal o es clave para tu viaje?
 
-3.  **Define Pros y Contras:** Después de clasificar, la app te pedirá que escribas los pros (beneficios de ir) y los contras (desventajas de no ir). Esto te ayuda a reflexionar y, además, activa las notificaciones para recordarte tu visita más adelante.
+3.  **Define Pros y Contras:** Inmediatamente después de clasificar un destino, la aplicación te pedirá que escribas los **pros** (beneficios de ir) y los **contras** (desventajas de no ir). Este paso es clave por dos razones:
+    *   Te ayuda a reflexionar sobre por qué quieres visitar el lugar.
+    *   Activa las **notificaciones automáticas** para recordarte la visita si el destino tiene una fecha programada.
 
-4.  **Visualiza tu Ruta Sugerida:** Inmediatamente después de clasificar tus favoritos, un itinerario priorizado aparecerá en la parte inferior, organizado según la Matriz de Eisenhower:
+4.  **Visualiza tu Ruta Sugerida:** Mientras clasificas tus lugares, un itinerario priorizado aparecerá y se actualizará en la parte inferior, organizado según la Matriz de Eisenhower:
     *   **🔥 ¡Hazlo Ahora! (Importante y Urgente):** Tus máximas prioridades.
     *   **🗓️ Planifica (Importante, No Urgente):** Actividades valiosas que puedes agendar con más calma.
-    *   **⚡ Delega o Hazlo Rápido (Urgente, No Importante):** Tareas que deben hacerse pronto pero no son críticas para tus metas principales.
-    *   **🗑️ Considera Omitir (No Importante, No Urgente):** Lugares que podrías dejar para otra ocasión si tienes poco tiempo.
+    *   **⚡ Delega o Hazlo Rápido (Urgente, No Importante):** Tareas que deben hacerse pronto pero no son críticas.
+    *   **🗑️ Considera Omitir (No Importante, No Urgente):** Lugares que podrías saltarte si tienes poco tiempo.
 
 ---
 
